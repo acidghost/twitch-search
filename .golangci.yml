@@ -1,0 +1,38 @@
+linters:
+  enable:
+    - bodyclose
+    - deadcode
+    - errcheck
+    - gocyclo
+    - gofmt
+    - goheader
+    - gocritic
+    - govet
+    - ineffassign
+    - megacheck
+    - misspell
+    - structcheck
+    - revive
+    - varcheck
+  disable-all: true
+linters-settings:
+  gocritic:
+    enabled-tags:
+      - diagnostic
+      - style
+      - performance
+      - opinionated
+    disabled-tags:
+      - experimental
+    disabled-checks: []
+  goheader:
+    values:
+      const:
+        YEAR: 2021
+    # Mind the invisible ink below...
+    template: |-2
+      (c) Copyright {{ YEAR }}, twitch-search Authors.
+      
+      Licensed under the terms of the GNU GPL License version 3.
+  golint:
+    min-confidence: 0.8
