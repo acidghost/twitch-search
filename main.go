@@ -15,6 +15,7 @@ import (
 	"os"
 	"path"
 	"strings"
+	"time"
 
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/twitch"
@@ -126,11 +127,12 @@ func main() {
 
 	var searchRes struct {
 		Data []struct {
-			ID        string `json:"id"`
-			UserName  string `json:"user_name"`
-			UserLogin string `json:"user_login"`
-			Title     string `json:"title"`
-			URL       string `json:"url"` // URL is null when requesting followed streams
+			ID        string    `json:"id"`
+			UserName  string    `json:"user_name"`
+			UserLogin string    `json:"user_login"`
+			Title     string    `json:"title"`
+			URL       string    `json:"url"`        // URL is null when requesting followed streams
+			CreatedAt time.Time `json:"created_at"` // same as above
 		} `json:"data"`
 	}
 
@@ -164,7 +166,7 @@ func main() {
 			die("Parsing JSON videos results: %v\n", err)
 		}
 		for _, v := range searchRes.Data {
-			fmt.Printf("%s %s\n", v.URL, v.Title)
+			fmt.Printf("%s %s %s\n", v.URL, v.CreatedAt.Format("2006-01-02"), v.Title)
 		}
 	}
 }
