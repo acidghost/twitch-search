@@ -150,7 +150,8 @@ func main() {
 			die("Parsing JSON videos results: %v\n", err)
 		}
 		for _, v := range searchRes.Data {
-			fmt.Printf("%s %s\n", v.UserLogin, v.Title)
+			title := strings.ReplaceAll(v.Title, "\n", " ")
+			fmt.Printf("%s %s\n", v.UserLogin, title)
 		}
 	} else {
 		chanID, err := searchChannel(client, *flagChan)
@@ -166,7 +167,8 @@ func main() {
 			die("Parsing JSON videos results: %v\n", err)
 		}
 		for _, v := range searchRes.Data {
-			fmt.Printf("%s %s %s\n", v.URL, v.CreatedAt.Format("2006-01-02"), v.Title)
+			title := strings.ReplaceAll(v.Title, "\n", " ")
+			fmt.Printf("%s %s %s\n", v.URL, v.CreatedAt.Format("2006-01-02"), title)
 		}
 	}
 }
