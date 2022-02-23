@@ -1,4 +1,4 @@
-// (c) Copyright 2021, twitch-search Authors.
+// (c) Copyright 2022, twitch-search Authors.
 //
 // Licensed under the terms of the GNU GPL License version 3.
 

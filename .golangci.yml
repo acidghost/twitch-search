@@ -26,9 +26,6 @@ linters-settings:
       - experimental
     disabled-checks: []
   goheader:
-    values:
-      const:
-        YEAR: 2021
     # Mind the invisible ink below...
     template: |-2
       (c) Copyright {{ YEAR }}, twitch-search Authors.
